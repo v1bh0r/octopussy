@@ -19,4 +19,12 @@ class User < ActiveRecord::Base
     end
     user
   end
+
+  def github_client
+    Github.new :oauth_token => oauth_token
+  end
+
+  def projects
+    github_client.repos.all
+  end
 end
