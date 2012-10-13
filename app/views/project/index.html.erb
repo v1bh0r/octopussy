@@ -1,19 +1,22 @@
 <div class="row" id='projects'>
-	<ul class="thumbnails project-thumbnails" id='fav'>
-		<h1>Favorite Projects</h1>
-		<hr />
-		<div class='center', id='wait'>
-			<div>Please wait... We are fetching your projects</div><br />
-			<%= image_tag 'spinner.gif', :alt => 'please wait' %>
-		</div>
-	</ul>
-	<ul class="thumbnails project-thumbnails" id='unfav'>
-		<h1>Other Projects</h1>
-		<hr />
-		<div class='center', id='wait'>
-			<div>Please wait... We are fetching your projects</div><br />
-			<%= image_tag 'spinner.gif', :alt => 'please wait' %>
-		</div>
-		<%#= "<h4 style='text-align:center'>Wallah! All projects are your favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
-	</ul>
-</div>
+  <div class="span12">
+    <ul class="thumbnails project-thumbnails" id='fav'>
+      <h1>Favorite Projects</h1>
+      <hr/>
+      <div class='center' id='favorite-projects-spinner'>
+        <div>Please wait while we are fetching your projects</div>
+        <br/>
+        <%= image_tag 'spinner.gif', :alt => 'please wait' %>
+      </div>
+    </ul>
+    <ul class="thumbnails project-thumbnails" id='unfav'>
+      <h1>Other Projects</h1>
+      <hr/>
+      <div class='center' id='projects-spinner'>
+        <div>Please wait while we are fetching your projects</div>
+        <br/>
+        <%= image_tag 'spinner.gif', :alt => 'please wait' %>
+      </div>
+<%#= "<h4 style='text-align:center'>Wallah! All projects are your favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
+    </ul>
+  </div>
