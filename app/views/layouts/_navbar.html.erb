@@ -8,7 +8,7 @@
       <% if user_signed_in? %>
           <li>
             <%= link_to current_user.info['urls']['GitHub'], :target => '_blank' do %>
-                <%= image_tag(current_user.info['image'], :size => '20x20') %>&nbsp;<%= current_user.info['name'] %>
+                <%= image_tag(current_user.info['image'], :class => 'display-pic') %>&nbsp;<%= current_user.info['name'] %>
             <% end %>
           </li>
           <li>
