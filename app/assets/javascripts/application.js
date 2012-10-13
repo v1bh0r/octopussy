@@ -13,3 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+var favUnfav = function(btnId) {
+	if($('#fav-unfav-' + btnId).find('i').attr("class") == 'icon-eye-open') {
+		$('#fav-unfav-' + btnId).html("<i class='icon-eye-close'></i>Non Favourite");
+	} else {
+		$('#fav-unfav-' + btnId).html("<i class='icon-eye-open'></i>Favourite");
+	}
+}
