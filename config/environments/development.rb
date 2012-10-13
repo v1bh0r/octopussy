@@ -34,4 +34,7 @@ Octopussy::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  GITHUB_API_CLIENT_ID = '605f47dba60099267ff2'
+  GITHUB_API_SECRET = '089914cbfb3d6e9ec499ff60781247edd7357a06'
 end

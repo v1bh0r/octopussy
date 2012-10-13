@@ -64,4 +64,7 @@ Octopussy::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  GITHUB_API_CLIENT_ID = 'b8e9459a26aef3be20dc'
+  GITHUB_API_SECRET = '69b86b3768796150a37c287ffe1cd09bba83c927'
 end
