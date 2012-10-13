@@ -1,6 +1,5 @@
 class ProjectController < ApplicationController
   def index
-    @projects = current_user.projects
   end
 
   def show
@@ -14,5 +13,10 @@ class ProjectController < ApplicationController
       fav.delete unless fav.nil?
     end
     render :json => :ok
+  end
+
+  def fetch_projects
+    @projects = current_user.projects
+    render :partial => 'projects_thumbnail', :locals => { :projects => @projects }
   end
 end

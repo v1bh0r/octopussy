@@ -1,0 +1,46 @@
+<% btn_texts = ["<i class='icon-eye-close'></i>Not Favorite", "<i class='icon-eye-open'></i>Favorite"] %>
+
+<% btn_texts.each_with_index do |btn_text, index| %>
+	<% if index == 1 %>
+		<ul class="thumbnails project-thumbnails" id='unfav'>
+			<h1>Other Projects</h1>
+	<% else %>
+		<ul class="thumbnails project-thumbnails" id='unfav'>
+			<h1>Favorite Projects</h1>
+	<% end %>
+	<hr />
+	<% projects.each do |project| %>
+		<% fav = Favourite.find_by_project_id(project.id) %>
+		<% my_fav = (index == 1 ? !fav : fav) %>
+		<% if my_fav %>
+			<% project_name = project.name %>
+			<% owner_login = project.owner.login %>
+			<li class="span4 center">
+				<div class="thumbnail project-thumbnail">
+					<div class='span2 owner-pic'><%= image_tag project.owner.avatar_url, :title => project.owner.name, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
+					<div class='span2 collaborator-pics'>
+						<h3 class='project-title'><%= link_to truncate(project_name,:length => 15), '#' %></h3></a>
+						<% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
+							<%= image_tag collaborator.avatar_url, :class => 'collaborators-small img-rounded', :title => collaborator.name, :alt => 'Collaborator' %>
+						<% end %>
+					</div>
+					<div class='span3 center'>
+						<a href="#">
+							<div class="progress">
+								<div class="bar" style="width: <%=progress(owner_login,project_name)%>%;"></div>
+							</div>
+						</a>
+					</div><br/>
+					<div>
+						<%= link_to '#', :class => 'btn btn-warning' do %>
+							<%= current_user.all_milestones(owner_login, project_name).count %> Milestone(s)
+						<% end %>
+						<a href='javascript:;' class='btn fav-unfav-btn' id='fav-unfav-<%=project.id%>' onclick='favUnfav(<%=project.id%>);'><%= btn_text.html_safe %></a>
+					</div>
+				</div>
+			</li>
+		<% end %>
+	<% end %>
+	<%#= "<h4 style='text-align:center'>Oops! You have not marked any project as favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
+	</ul>
+<% end %>

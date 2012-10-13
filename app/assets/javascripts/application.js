@@ -14,6 +14,12 @@
 //= require jquery_ujs
 //= require_tree .
 
+$(function() {
+	if (window.location.pathname == '/project/index') {
+		fetchProjects();
+	}
+});
+
 var favUnfav = function(projectId) {
 	var el = $('#fav-unfav-' + projectId).find('i').attr("class") == 'icon-eye-open';
 	$.ajax({
@@ -21,9 +27,9 @@ var favUnfav = function(projectId) {
 		data: 'id=' + projectId + '&fav=' + el,
 		success: function() {
 			if(el) {
-				$('#fav-unfav-' + projectId).html("<i class='icon-eye-close'></i>Non Favourite");
+				$('#fav-unfav-' + projectId).html("<i class='icon-eye-close'></i>Non Favorite");
 			} else {
-				$('#fav-unfav-' + projectId).html("<i class='icon-eye-open'></i>Favourite");
+				$('#fav-unfav-' + projectId).html("<i class='icon-eye-open'></i>Favorite");
 			}
 
 			var affected_li = $('#fav-unfav-' + projectId).parents('li.span4');
@@ -42,7 +48,7 @@ var fetchProjects = function() {
 	$.ajax({
 		url: '/project/fetch_projects',
 		success: function(data) {
-			$("#fav").append(data);
+			$("#projects").html(data);
 		}
 	});
 }
