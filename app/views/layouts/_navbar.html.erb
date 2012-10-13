@@ -1,12 +1,14 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="index.html">OctoPussy</a>
+    <%= link_to root_path, :class => "brand" do %>
+        <%= image_tag 'octopussy-logo-white-26x23.png', :style => 'vertical-align:top' %>&nbsp;OctoPussy
+    <% end %>
 
     <ul class="nav pull-right">
       <% if user_signed_in? %>
           <li>
             <%= link_to current_user.info['urls']['GitHub'], :target => '_blank' do %>
-                <%= image_tag(current_user.info['image'], :size => '20x20') %>&nbsp;<%= current_user.info['name'] %>
+                <%= image_tag(current_user.info['image'], :class => 'display-pic') %>&nbsp;<%= current_user.info['name'] %>
             <% end %>
           </li>
           <li>
