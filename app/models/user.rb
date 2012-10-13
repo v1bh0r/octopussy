@@ -1,3 +1,5 @@
+require 'github'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -22,22 +24,22 @@ class User < ActiveRecord::Base
   end
 
   def github_client
-    Github.new :oauth_token => oauth_token
+    Github.new oauth_token
   end
 
   def projects
-    github_client.repos.all
+    github_client.repos :params => {:sort => 'updated'}
   end
 
   def milestones project_owner, project_name
-    github_client.issues.milestones.list project_owner, project_name, :state => 'open'
+    #github_client.issues.milestones.list project_owner, project_name, :state => 'open'
   end
 
   def all_milestones(owner, project_name)
-    github_client.issues.milestones.list(owner, project_name) rescue []
+    #github_client.issues.milestones.list(owner, project_name) rescue []
   end
 
   def collaborators(owner, project_name)
-    github_client.repos.collaborators.list(owner, project_name)
+    #github_client.repos.collaborators.list(owner, project_name)
   end
 end
