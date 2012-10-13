@@ -27,7 +27,7 @@ var favUnfav = function(projectId) {
 		data: 'id=' + projectId + '&fav=' + el,
 		success: function() {
 			if(el) {
-				$('#fav-unfav-' + projectId).html("<i class='icon-eye-close'></i>Non Favorite");
+				$('#fav-unfav-' + projectId).html("<i class='icon-eye-close'></i>Not Favorite");
 			} else {
 				$('#fav-unfav-' + projectId).html("<i class='icon-eye-open'></i>Favorite");
 			}
