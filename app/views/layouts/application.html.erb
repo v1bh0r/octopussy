@@ -17,36 +17,20 @@
   <%= favicon_link_tag 'images/favicon.ico', :rel => 'shortcut icon' %>
 </head>
 <body>
-<div class="navbar">
-  <div class="navbar-inner">
-    <a class="brand" href="index.html">OctoPussy</a>
+<%= render :partial => 'layouts/navbar' %>
 
-    <ul class="nav pull-right">
-      <li>
-        <%= link_to 'About', home_about_path %>
-      </li>
-      <% if user_signed_in? %>
-          <li>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-          </li>
-      <% else %>
-          <li>
-            <%= link_to('Login', user_omniauth_authorize_path(:github)) %>
-          </li>
-      <% end %>
-    </ul>
-  </div>
-</div>
 <div class="container-fluid">
-  <% if notice %>
-      <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-      <p class="alert"><%= alert %></p>
-  <% end %>
-
+  <%= render :partial => 'layouts/notices' %>
   <%= yield %>
 </div>
+
+<hr>
+<footer>
+  <div class="pagination-centered">
+    <h3>Rumble Rumble!</h3>
+    <%= link_to image_tag('rr-logo-small.png'), 'http://railsrumble.com/entries/212-red-indians', :target => '_blank' %>
+  </div>
+</footer>
 
 <!-- Javascripts
 ================================================== -->
