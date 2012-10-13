@@ -1,14 +1,16 @@
-<%k = current_user.oauth_token %> <%= k.inspect %><div class="content_milestone">
+<% milestones = current_user.milestones 'ramankapur', 'foundation3' %>
+
+<div class="content_milestone">
 <div class="row center">
 	<ul class="thumbnails center">
-		
-		<li class="span4">
+		<% milestones.each do |milestone| %>
+                <li class="span4">
 			<div class="thumbnail" style='background-color: rosyBrown;'>
 				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
 				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
+					<h2><%= milestone.title %></h2>
+                                        <% open_issues =  milestone.open_issues %>
+                                        <% closed_issues = milestone.closed_issues %>
 					<p>Open Issues : <%= open_issues %><br>
                                            Closed Issues : <%= closed_issues %> </p>
 				</div>
@@ -23,247 +25,11 @@
 				
 			</div>
 		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-                                        <% open_issues = 20 %>
-                                        <% closed_issues = 30 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-<li class="span4">
-			<div class="thumbnail" style='background-color: rosyBrown;'>
-				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
-				<div class='span2' style='min-height:110px'>
-					<h3>Milestone Name</h3>
-					<% open_issues = 10 %>
-                                        <% closed_issues = 5 %>
-					<p>Open Issues : <%= open_issues %><br>
-                                           Closed Issues : <%= closed_issues %> </p>
-				</div>
-                                 
-                                 <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-                                 <%#= raise progress.inspect %>
-				<div class='span4'>
-					<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-					</div>
-				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-			</div>
-		</li>
-
+                 <% end %>
 	</ul>
 </div>
 </div>
+
 <style>
 .content_milestone
 {

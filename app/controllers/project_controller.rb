@@ -5,8 +5,8 @@ class ProjectController < ApplicationController
   
     @issues = github.issues.all 
     
-    @milestones = github.issues.milestones.all
-    raise @milestones.inspect
+    @milestones = github.issues.milestones
+   
  end
 
   def show

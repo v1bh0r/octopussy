@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessor :encrypted_password
 
   def self.find_for_github(access_token)
-    if user = User.where(:uid => access_token.uid ).first
+    if user = User.where(:uid => access_token.uid).first
       user.update_attributes :oauth_token => access_token['credentials']['token'], :info => access_token['info']
     else
       user = User.create!(:uid => access_token.uid, :oauth_token => access_token['credentials']['token'], :info => access_token['info'])
@@ -26,5 +26,9 @@ class User < ActiveRecord::Base
 
   def projects
     github_client.repos.all
+  end
+
+  def milestones project_owner, project_name
+    github_client.issues.milestones.list project_owner, project_name, :state => 'open'
   end
 end
