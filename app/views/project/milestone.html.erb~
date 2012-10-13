@@ -1,4 +1,4 @@
-<div class="content_milestone">
+<%k = current_user.oauth_token %> <%= k.inspect %><div class="content_milestone">
 <div class="row center">
 	<ul class="thumbnails center">
 		
@@ -19,7 +19,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -41,7 +41,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -62,7 +62,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -84,7 +84,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -105,7 +105,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -127,7 +127,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -148,7 +148,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -170,7 +170,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -191,7 +191,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -213,7 +213,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -234,7 +234,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -256,7 +256,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary'>Issue List</a>
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
