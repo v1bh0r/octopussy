@@ -10,10 +10,10 @@ class User < ActiveRecord::Base
   attr_accessor :github_info, :encrypted_password
 
   def self.find_for_github(access_token)
-    if user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
+    if user = User.where(:uid => access_token.uid ).first
       user.update_attributes :oauth_token => access_token['credentials']['token']
     else
-      user = User.create!(:provider => access_token.provider, :uid => access_token.uid, :oauth_token => access_token['credentials']['token'])
+      user = User.create!(:uid => access_token.uid, :oauth_token => access_token['credentials']['token'])
     end
     user.github_info = access_token['info']
     user
