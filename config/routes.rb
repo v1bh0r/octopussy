@@ -1,4 +1,8 @@
 Octopussy::Application.routes.draw do
+  get "project/index"
+
+  get "project/show"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get "home/index"
