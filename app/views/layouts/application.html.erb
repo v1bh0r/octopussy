@@ -24,13 +24,7 @@
   <%= yield %>
 </div>
 
-<hr>
-<footer>
-  <div class="pagination-centered">
-    <h3>Rumble Rumble!</h3>
-    <%= link_to image_tag('rr-logo-small.png'), 'http://railsrumble.com/entries/212-red-indians', :target => '_blank' %>
-  </div>
-</footer>
+<%= render :partial => 'layouts/footer' %>
 
 <!-- Javascripts
 ================================================== -->
