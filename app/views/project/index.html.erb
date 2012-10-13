@@ -1,242 +1,82 @@
 <div class="row">
-	<ul class="thumbnails project-thumbnails">
-		<h1>Favourites</h1>
+	<ul class="thumbnails project-thumbnails" id='fav'>
+		<h1>Favourite Projects</h1>
 		<hr />
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+		<% @projects.each do |project| %>
+			<% if Favourite.find_by_project_id(project.id) %>
+				<% project_name = project.name %>
+				<% owner_login = project.owner.login %>
+				<li class="span4 center">
+					<div class="thumbnail project-thumbnail">
+						<div class='span2 owner-pic'><%= image_tag project.owner.avatar_url, :title => project.owner.name, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
+						<div class='span2 collaborator-pics'>
+							<h3><%= link_to truncate(project_name,:length => 15), '#' %></h3></a>
+							<p><%=  truncate(project.description, :length => 50) %></p>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Milestones</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-1' onclick='favUnfav(1);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+						<div class='span3'>
+							<% current_user.collaborators(owner_login, project_name).each do |collaborator| %>
+								<%= image_tag collaborator.avatar_url, :class => 'collaborators-small img-rounded', :title => collaborator.name, :alt => 'Collaborator' %>
+							<% end %>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-2' onclick='favUnfav(2);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+						<div class='span3 center'>
+							<a href="#">
+								<div class="progress">
+									<div class="bar" style="width: <%=progress(owner_login,project_name)%>%;"></div>
+								</div>
+							</a>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-3' onclick='favUnfav(3);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+						<div class='controls'>
+							<%= link_to '#', :class => 'btn btn-warning' do %>
+								<%= current_user.all_milestones(owner_login, project_name).count %> Milestone(s)
+							<% end %>
+							<a href='javascript:;' class='btn fav-unfav-btn' id='fav-unfav-<%=project.id%>' onclick='favUnfav(<%=project.id%>);'><i class='icon-eye-close'></i>Non Favourite</a>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-4' onclick='favUnfav(4);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
-						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-5' onclick='favUnfav(5);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
-						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-6' onclick='favUnfav(6);'><i class='icon-eye-close'></i>Non Favourite</a>
-				</div>
-			</div>
-		</li>
+					</div>
+				</li>
+			<% end %>
+		<% end %>
+		<%#= "<h4 style='text-align:center'>Oops! You have not marked any project as favourite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
 	</ul>
-	<ul class="thumbnails project-thumbnails">
-		<hr class='unfav' />
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+	<ul class="thumbnails project-thumbnails" id='unfav'>
+		<h1>Other Projects</h1>
+		<hr />
+		<% @projects.each do |project| %>
+			<% unless Favourite.find_by_project_id(project.id) %>
+				<% project_name = project.name %>
+				<% owner_login = project.owner.login %>
+				<li class="span4 center">
+					<div class="thumbnail project-thumbnail">
+						<div class='span2 owner-pic'><%= image_tag project.owner.avatar_url, :title => project.owner.name, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
+						<div class='span2 collaborator-pics'>
+							<h3><%= link_to truncate(project_name,:length => 15), '#' %></h3></a>
+							<p><%= truncate(project.description, :length => 50) %></p>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-7' onclick='favUnfav(7);'><i class='icon-eye-open'></i>Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+						<div class='span3'>
+							<% current_user.collaborators(owner_login, project_name).each do |collaborator| %>
+								<%= image_tag collaborator.avatar_url, :class => 'collaborators-small img-rounded', :title => collaborator.name, :alt => 'Collaborator' %>
+							<% end %>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-8' onclick='favUnfav(8);'><i class='icon-eye-open'></i>Favourite</a>
-				</div>
-			</div>
-		</li>
-		<li class="span4 center">
-			<div class="thumbnail project-thumbnail">
-				<div class='span2 owner-pic'><img src="http://www.hreat.org/profilepics/nopic.jpg" class="img-rounded"></div>
-				<div class='span2 collaborator-pics'>
-					<a href="#"><h3>Thumbnail label</h3></a>
-					<p>Thumbnail caption...</p>
-				</div>
-				<div class='span3'>
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-					<img src="http://www.hreat.org/profilepics/nopic.jpg" class="collaborators-small img-rounded">
-				</div>
-				<div class='span3'>
-					<a href="#">
-						<div class="progress">
-							<div class="bar" style="width: 60%;"></div>
+						<div class='span3 center'>
+							<a href="#">
+								<div class="progress">
+									<div class="bar" style="width: <%=progress(owner_login,project_name)%>%;"></div>
+								</div>
+							</a>
 						</div>
-					</a>
-				</div>
-				<div class='controls'>
-					<a href='#' class='btn btn-warning'>7 Open Issues</a>
-					<a href='#' class='btn btn-success'>7 Closed Issues</a>
-					<a href='#' class='btn fav-unfav-btn' id='fav-unfav-9' onclick='favUnfav(9);'><i class='icon-eye-open'></i>Favourite</a>
-				</div>
-			</div>
-		</li>
+						<div class='controls'>
+							<%= link_to '#', :class => 'btn btn-warning' do %>
+								<%= current_user.all_milestones(owner_login, project_name).count %> Milestone(s)
+							<% end %>
+							<a href='#' class='btn fav-unfav-btn' id='fav-unfav-<%=project.id%>' onclick='favUnfav(<%=project.id%>);'><i class='icon-eye-open'></i>Favourite</a>
+						</div>
+					</div>
+				</li>
+			<% end %>
+		<% end %>
+		<%#= "<h4 style='text-align:center'>Wallah! All projects are your favourite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
 	</ul>
 </div>
+
+<script>
+	//fetchProjects();
+</script>

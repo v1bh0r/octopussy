@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   attr_accessor :encrypted_password
+  has_many :favourites
 
   def self.find_for_github(access_token)
     if user = User.where(:uid => access_token.uid).first
@@ -30,5 +31,13 @@ class User < ActiveRecord::Base
 
   def milestones project_owner, project_name
     github_client.issues.milestones.list project_owner, project_name, :state => 'open'
+  end
+
+  def all_milestones(owner, project_name)
+    github_client.issues.milestones.list(owner, project_name) rescue []
+  end
+
+  def collaborators(owner, project_name)
+    github_client.repos.collaborators.list(owner, project_name)
   end
 end

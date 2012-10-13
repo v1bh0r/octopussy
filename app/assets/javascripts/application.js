@@ -14,10 +14,35 @@
 //= require jquery_ujs
 //= require_tree .
 
-var favUnfav = function(btnId) {
-	if($('#fav-unfav-' + btnId).find('i').attr("class") == 'icon-eye-open') {
-		$('#fav-unfav-' + btnId).html("<i class='icon-eye-close'></i>Non Favourite");
-	} else {
-		$('#fav-unfav-' + btnId).html("<i class='icon-eye-open'></i>Favourite");
-	}
+var favUnfav = function(projectId) {
+	var el = $('#fav-unfav-' + projectId).find('i').attr("class") == 'icon-eye-open';
+	$.ajax({
+		url: '/project/toggle_fav',
+		data: 'id=' + projectId + '&fav=' + el,
+		success: function() {
+			if(el) {
+				$('#fav-unfav-' + projectId).html("<i class='icon-eye-close'></i>Non Favourite");
+			} else {
+				$('#fav-unfav-' + projectId).html("<i class='icon-eye-open'></i>Favourite");
+			}
+
+			var affected_li = $('#fav-unfav-' + projectId).parents('li.span4');
+			$(affected_li).remove();
+
+			if (el) {
+				$('ul#fav').append(affected_li);
+			} else {
+				$('ul#unfav').append(affected_li);
+			}
+		}
+	});
+}
+
+var fetchProjects = function() {
+	$.ajax({
+		url: '/project/fetch_projects',
+		success: function(data) {
+			$("#fav").append(data);
+		}
+	});
 }
