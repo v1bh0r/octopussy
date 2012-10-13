@@ -15,6 +15,19 @@
   <%= stylesheet_link_tag "application", "/libs/bootstrap/css/bootstrap.min.css", "/libs/bootstrap/css/bootstrap-responsive.min.css", :media => "all" %>
 
   <%= favicon_link_tag 'favicon_16.png', :rel => 'shortcut icon' %>
+  <!-- For iPhone 4 Retina display: -->
+
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<%= image_path 'favicon_114.png' %>">
+
+
+  <!-- For iPad: -->
+
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<%= image_path 'favicon_72.png' %>">
+
+
+  <!-- For iPhone: -->
+
+  <link rel="apple-touch-icon-precomposed" href="<%= image_path 'favicon_57.png' %>">
 </head>
 <body>
 <%= render :partial => 'layouts/navbar' %>
