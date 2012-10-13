@@ -20,3 +20,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem 'capistrano'
+
+group :production do
+  gem 'therubyracer'
+end

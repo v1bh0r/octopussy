@@ -35,8 +35,8 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: octopussy_production
+  database: railsrumble_production
   pool: 5
   username: root
-  password: f31mage
+  password: (WBEQtDRRLSo
   socket: /var/run/mysqld/mysqld.sock
