@@ -1,0 +1,24 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <a class="brand" href="index.html">OctoPussy</a>
+
+    <ul class="nav pull-right">
+      <% if user_signed_in? %>
+          <li>
+            <%= link_to current_user.info['urls']['GitHub'], :target => '_blank' do %>
+                <%= image_tag(current_user.info['image'], :size => '20x20') %>&nbsp;<%= current_user.info['name'] %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to(destroy_user_session_path, :method => :delete) do %>
+                <i class="close"></i>&nbsp;Logout
+            <% end %>
+          </li>
+      <% else %>
+          <li>
+            <%= link_to('Login', user_omniauth_authorize_path(:github)) %>
+          </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

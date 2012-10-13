@@ -11,3 +11,52 @@
  *= require_self
  *= require_tree .
  */
+
+.center {
+	text-align: center;
+}
+
+.collaborators-small {
+	width: 30px;
+	float: left;
+	margin-left: 2px;
+	margin-bottom: 5px;
+}
+
+.fav-unfav-pull-down {
+	margin-top: 30px;
+}
+
+ul.project-thumbnails {
+	padding: 0 7em;
+	margin-left: 0;
+}
+
+div.project-thumbnail {
+	background-color: rosyBrown;
+}
+
+div.project-thumbnail .span2 a {
+	color: #690000;
+}
+
+a.fav-unfav-btn {
+	width: 107px;
+}
+
+div.owner-pic {
+	width: 107px;
+}
+
+div.collaborator-pics {
+	min-height:110px;
+}
+
+hr.unfav {
+	margin-top: -7px;
+}
+
+/* Bootstrap classes override */
+a.btn {
+	padding: 12px 10px;
+}
