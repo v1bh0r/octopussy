@@ -11,12 +11,12 @@
           <div class='span2 collaborator-pics'>
             <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), project[:html_url], :title => project_name, :target => '_blank' %></h3></a>
             <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
-                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
+                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:login], :alt => 'Collaborator' %>
             <% end %>
           </div>
           <div class='span3 pagination-centered'>
             <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :title => 'Project Health based on Milestones' do %>
-                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
+                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%= project_name %>' data-id='<%= project[:id] %>' data-owner='<%= owner_login %>'>
                   <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"><p></p></div>
                 </div>
             <% end %>
@@ -27,7 +27,8 @@
             <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :class => 'btn btn-warning', :id => "mile-#{project[:id]}" do %>
                 Milestones
             <% end %>
-            <a href='javascript:;' class='btn' id='fav-unfav-<%= project[:id] %>' onclick='favUnfav(<%=project[:id]%>);'><i class='icon-eye-close'></i>Not Favorite</a>
+            <a href='javascript:;' class='btn' id='fav-unfav-<%= project[:id] %>' onclick='favUnfav(<%=project[:id]%>);'><i class='icon-eye-close'></i>Not
+              Favorite</a>
           </div>
         </div>
       </li>
@@ -47,12 +48,12 @@
           <div class='span2 collaborator-pics'>
             <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), project[:html_url], :title => project_name, :target => '_blank' %></h3></a>
             <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
-                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
+                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:login], :alt => 'Collaborator' %>
             <% end %>
           </div>
           <div class='span3 pagination-centered'>
             <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :title => 'Project Health based on Milestones' do %>
-                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
+                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%= project_name %>' data-id='<%= project[:id] %>' data-owner='<%= owner_login %>'>
                   <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"><p></p></div>
                 </div>
             <% end %>
