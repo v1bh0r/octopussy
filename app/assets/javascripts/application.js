@@ -67,8 +67,9 @@ var fetchProgress = function () {
             success: function (data) {
                 var el = $("#bar-" + p_id);
                 $(el).attr("style", ('width:' + data.completeness + '%'));
-                $(el).parent().attr('class', 'progress progress-danger');
-                $('#mile-' + p_id).text(data.total + ' Milestone(s)');
+                $(el).find('p').html(data.completeness + '%');
+                $(el).parent().attr('class', 'progress progress-success');
+                $('#mile-' + p_id).text(data.total + ' Milestones');
             }
         });
     });
