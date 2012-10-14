@@ -1,0 +1,14 @@
+<div class="well">
+  <table id="tasks" class="table table-striped">
+    <thead>
+    <tr>
+      <td><strong>Name</strong></td>
+      <td><strong>Labels</strong></td>
+      <td><strong>Assigned to</strong></td>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render :collection => @tasks, :partial => 'task' %>
+    </tbody>
+  </table>
+</div>

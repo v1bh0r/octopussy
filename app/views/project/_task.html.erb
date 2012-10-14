@@ -1,0 +1,19 @@
+<tr>
+  <td style="vertical-align: middle;">
+    <h3>
+      <%= link_to task[:title], task[:html_url], :target => "_blank", :title => "View in github" %>
+    </h3>
+  </td>
+  <td style="vertical-align: middle;">
+    <% task[:labels].each do |label| %>
+        <span class="label" style="background-color: #<%= label[:color] %>; color: #000000;"><%= label[:name] %></span>&nbsp;
+    <% end %>
+  </td>
+  <td style="vertical-align: middle;">
+    <% if task[:assignee] %>
+        <%= image_tag task[:assignee][:avatar_url], :title => task[:assignee][:login] %>
+    <% else %>
+        <h3>Not assigned</h3>
+    <% end %>
+  </td>
+</tr>

@@ -18,6 +18,7 @@ Octopussy::Application.routes.draw do
   get "home/contact"
 
   match "projects/:owner/:name/milestones" => 'project#milestones'
+  match "projects/:owner/:name/:milestone/tasks" => 'project#tasks'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

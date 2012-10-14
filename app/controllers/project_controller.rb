@@ -23,4 +23,8 @@ class ProjectController < ApplicationController
   def milestones
     @milestones = current_user.all_milestones params[:owner], params[:name]
   end
+
+  def tasks
+    @tasks = current_user.issues params[:owner], params[:name], params[:milestone]
+  end
 end
