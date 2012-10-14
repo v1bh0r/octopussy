@@ -6,7 +6,9 @@
   </td>
   <td style="vertical-align: middle;">
     <% task[:labels].each do |label| %>
-        <span class="label" style="background-color: #<%= label[:color] %>; color: #000000;"><%= label[:name] %></span>&nbsp;
+        <span class="label" style="background-color: #<%= label[:color] %>; color: #000000;">
+          <%= label[:name] %>
+        </span>&nbsp;
     <% end %>
   </td>
   <td style="vertical-align: middle;">
