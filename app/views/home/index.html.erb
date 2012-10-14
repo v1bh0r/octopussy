@@ -1,20 +1,23 @@
+<%= stylesheet_link_tag 'parallax/styles' %>
+
 <div class="hero-unit pagination-centered">
   <h1>Octo meets Pussy</h1>
 
-  <h2>Octo and Pussy are soulmates. Together they help you manage your projects. Here's how:</h2>
-
-  <p>
-
-  <h4>Track the health of your favorite projects in a glance.</h4>
-
-  <h4>Know if you are lagging behind in your milestones.</h4>
-
-  <h4>Know whats keeping you and your team busy.</h4>
-
-  <h4>And more...</h4>
-
-  </p>
-  <div class="content">
-    Raman to add his beach image here...
+  <h2>Octo and Pussy are soulmates. Together they help you manage your projects.</h2>
+  <!-- REQUIRED FOR PARALLAX -->
+  <div id="parallax" class="clear">
+    <div class="parallax-layer" style="width:1200px; height:300px;">
+      <img src="<%= image_path 'parallax/twinkle.png' %>" alt="" style="width:1200px; height:300px;"/>
+    </div>
+    <div class="parallax-layer" style="width:1200px; height:300px;">
+      <img src="<%= image_path 'parallax/sea.png' %>" alt="" style="width:1200px; height:300px;"/>
+    </div>
+    <div class="parallax-layer" style="width:1200px; height:250px;">
+      <img src="<%= image_path 'parallax/sand.png' %>" alt="" style="width:1200px; height:250px;"/>
+    </div>
+    <div class="parallax-layer" style="width:500px; height:250px;">
+      <img src="<%= image_path 'parallax/octo_pussy.png' %>" alt="" style="width:500px; height:250px;"/>
+    </div>
   </div>
+  <!-- /REQUIRED FOR PARALLAX -->
 </div>

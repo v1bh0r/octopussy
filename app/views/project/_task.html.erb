@@ -13,7 +13,7 @@
   </td>
   <td style="vertical-align: middle;">
     <% if task[:assignee] %>
-        <%= image_tag task[:assignee][:avatar_url], :title => task[:assignee][:login] %>
+        <%= image_tag task[:assignee][:avatar_url], :title => task[:assignee][:login], :size => '50x50' %>
     <% else %>
         <h3>Not assigned</h3>
     <% end %>

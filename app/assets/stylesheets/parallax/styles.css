@@ -1,0 +1,14 @@
+#parallax-header { 
+	height:200px; background-color:gray; 
+ }
+#parallax {
+	position:relative; overflow:hidden; width:100%; height:250px;
+	background-image:url('/assets/parallax/background.png');
+}
+.parallax-viewport {
+	position: relative;     /* relative, absolute, fixed */
+	overflow: hidden;
+}
+.parallax-layer {
+	position: absolute;
+}

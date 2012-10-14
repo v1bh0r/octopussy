@@ -6,7 +6,7 @@
     <h3><%= milestone[:due_on][0, 10] if milestone[:due_on] %></h3>
   </td>
   <td class="span3" style="vertical-align: middle;">
-    <%= image_tag(milestone[:creator][:avatar_url], :title => milestone[:creator][:login]) %>
+    <%= image_tag(milestone[:creator][:avatar_url], :title => milestone[:creator][:login], :size => '50x50') %>
   </td>
   <td style="vertical-align: middle;">
     <% progress = (milestone[:open_issues]*100)/(milestone[:open_issues] + milestone[:closed_issues]) %>
