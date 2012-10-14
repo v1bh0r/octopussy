@@ -1,0 +1,20 @@
+<tr>
+  <td>
+    <h1><%= milestone[:title] %></h1>
+  </td>
+  <td>
+    <h3><%= milestone[:due_on][0, 10] %></h3>
+  </td>
+  <td>
+    <%= image_tag(milestone[:creator][:avatar_url]) %>
+  </td>
+  <td>
+    <% progress = (milestone[:open_issues]*100)/(milestone[:open_issues] + milestone[:closed_issues]) %>
+    <div class="progress">
+      <div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
+    </div>
+  </td>
+  <td>
+    <a href='#' class='btn btn-primary'>Show Tasks</a>
+  </td>
+</tr>

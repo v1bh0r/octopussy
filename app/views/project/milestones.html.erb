@@ -1,0 +1,16 @@
+<div class="well">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <td>Name</td>
+      <td>Due On</td>
+      <td>Creator</td>
+      <td class="span4">Health</td>
+      <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render :collection => @milestones, :partial => 'milestone' %>
+    </tbody>
+  </table>
+</div>

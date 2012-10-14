@@ -19,4 +19,8 @@ class ProjectController < ApplicationController
     @projects = current_user.projects
     render :partial => 'projects_thumbnail', :locals => { :projects => @projects }
   end
+
+  def milestones
+    @milestones = current_user.all_milestones params[:owner], params[:name]
+  end
 end

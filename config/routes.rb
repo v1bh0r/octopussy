@@ -17,12 +17,12 @@ Octopussy::Application.routes.draw do
 
   get "home/contact"
 
+  match "projects/:owner/:name/milestones" => 'project#milestones'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:
-     match 'milestone' => 'project#milestone'
-     match 'milestone' => 'project#collaboraters'
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
