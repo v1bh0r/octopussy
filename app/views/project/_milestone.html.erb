@@ -1,9 +1,9 @@
 <tr class="center">
   <td style="vertical-align: middle;">
-    <h1><%= milestone[:title] %></h1>
+    <h3><%= milestone[:title] %></h3>
   </td>
   <td style="vertical-align: middle;">
-    <h3><%= milestone[:due_on][0, 10] %></h3>
+    <h3><%= milestone[:due_on][0, 10] if milestone[:due_on] %></h3>
   </td>
   <td class="span3" style="vertical-align: middle;">
     <%= image_tag(milestone[:creator][:avatar_url], :title => milestone[:creator][:login]) %>
