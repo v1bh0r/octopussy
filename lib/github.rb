@@ -44,7 +44,7 @@ class Github
       end
 
       case res.status
-        when 304       =
+        when 304
           puts 'Sending from cache'
           save_in_cache cache_key, updated_at: cached_value[:updated_at], response: cached_value[:response]
           return cached_value[:response]
