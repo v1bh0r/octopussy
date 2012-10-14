@@ -30,7 +30,17 @@ class User < ActiveRecord::Base
   def projects
     projects = github_client.repos :params => {:sort => 'updated'}
     favorites = self.favourites.all(:select => 'project_id').collect { |fav| fav.project_id }
-    projects.map! { |project| favorites.include?(project[:id]) ? project.merge(:favorite => true) : project }
+    favorite_projects = []
+    other_projects = []
+
+    projects.each do |project|
+      if favorites.include?(project[:id])
+        favorite_projects << project
+      else
+        other_projects << project
+      end
+    end
+    { :favorites => favorite_projects, :others => other_projects }
   end
 
   def issues(project_owner, project_name, milestone_id)

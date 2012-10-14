@@ -1,48 +1,76 @@
-<% btn_texts = ["<i class='icon-eye-close'></i>Not Favorite", "<i class='icon-eye-open'></i>Favorite"] %>
+<ul class="thumbnails project-thumbnails" id='fav'>
+  <h1>Favorite Projects</h1>
+  <hr/>
 
-<% btn_texts.each_with_index do |btn_text, index| %>
-    <% if index == 1 %>
-        <ul class="thumbnails project-thumbnails" id='unfav'>
-          <h1>Other Projects</h1>
-    <% else %>
-        <ul class="thumbnails project-thumbnails" id='fav'>
-          <h1>Favorite Projects</h1>
-    <% end %>
-    <hr/>
+  <% @projects[:favorites].each do |project| %>
+      <% project_name = project[:name] %>
+      <% owner_login = project[:owner][:login] %>
+      <li class="span4 center">
+        <div class="thumbnail project-thumbnail">
+          <div class='span2 owner-pic'><%= image_tag project[:owner][:avatar_url], :title => owner_login, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
+          <div class='span2 collaborator-pics'>
+            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), '#' %></h3></a>
+            <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
+                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
+            <% end %>
+          </div>
+          <div class='span3 center'>
+            <%= link_to '#' do %>
+                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
+                  <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"></div>
+                </div>
+            <% end %>
+          </div>
+          <br/>
 
-    <% projects.each do |project| %>
-        <% my_fav = (index == 1 ? !project[:favorite] : project[:favorite]) %>
-        <% if my_fav %>
-            <% project_name = project[:name] %>
-            <% owner_login = project[:owner][:login] %>
-            <li class="span4 center">
-              <div class="thumbnail project-thumbnail">
-                <div class='span2 owner-pic'><%= image_tag project[:owner][:avatar_url], :title => project[:owner][:name], :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
-                <div class='span2 collaborator-pics'>
-                  <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), '#' %></h3></a>
-                  <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
-                      <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
-                  <% end %>
-                </div>
-                <div class='span3 center'>
-                  <%= link_to '#' do %>
-                      <div class="progress">
-                        <div class="bar" style="width: <%=progress(owner_login,project_name)%>%;"></div>
-                      </div>
-                  <% end %>
-                </div>
-                <br/>
+          <div>
+            <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :class => 'btn btn-warning', :id => "mile-#{project[:id]}" do %>
+                Milestone(s)
+            <% end %>
+            <a href='javascript:;' class='btn fav-unfav-btn' id='fav-unfav-<%= project[:id] %>' onclick='favUnfav(<%=project[:id]%>);'><i class='icon-eye-close'></i>Not Favorite</a>
+          </div>
+        </div>
+      </li>
+  <% end %>
+  <%#= "<h4 style='text-align:center'>Oops! You have not marked any project as favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
+</ul>
 
-                <div>
-                  <%= link_to '#', :class => 'btn btn-warning' do %>
-                      <%= current_user.all_milestones(owner_login, project_name).count %> Milestone(s)
-                  <% end %>
-                  <a href='javascript:;' class='btn fav-unfav-btn' id='fav-unfav-<%= project[:id] %>' onclick='favUnfav(<%=project[:id]%>);'><%= btn_text.html_safe %></a>
+<ul class="thumbnails project-thumbnails" id='unfav'>
+  <h1>Other Projects</h1>
+  <hr/>
+  <% @projects[:others].each do |project| %>
+      <% project_name = project[:name] %>
+      <% owner_login = project[:owner][:login] %>
+      <li class="span4 center">
+        <div class="thumbnail project-thumbnail">
+          <div class='span2 owner-pic'><%= image_tag project[:owner][:avatar_url], :title => owner_login, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
+          <div class='span2 collaborator-pics'>
+            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), '#' %></h3></a>
+            <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
+                <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
+            <% end %>
+          </div>
+          <div class='span3 center'>
+            <%= link_to '#' do %>
+                <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
+                  <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"></div>
                 </div>
-              </div>
-            </li>
-        <% end %>
-    <% end %>
-    <%#= "<h4 style='text-align:center'>Oops! You have not marked any project as favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
-    </ul>
-<% end %>
+            <% end %>
+          </div>
+          <br/>
+
+          <div>
+            <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :class => 'btn btn-warning', :id => "mile-#{project[:id]}" do %>
+                Milestone(s)
+            <% end %>
+            <a href='javascript:;' class='btn fav-unfav-btn' id='fav-unfav-<%= project[:id] %>' onclick='favUnfav(<%=project[:id]%>);'><i class='icon-eye-open'></i>Favorite</a>
+          </div>
+        </div>
+      </li>
+  <% end %>
+</ul>
+
+<script>
+    fetchProgress();
+</script>
+

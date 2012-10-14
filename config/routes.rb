@@ -5,6 +5,8 @@ Octopussy::Application.routes.draw do
 
   get "project/fetch_projects"
 
+  get "project/fetch_progress"
+
   get "project/show"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }

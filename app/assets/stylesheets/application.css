@@ -58,6 +58,7 @@ div.collaborator-pics {
 
 h3.project-title {
     margin-top: 1px;
+    text-align: left;
 }
 
 /* Bootstrap classes override */
