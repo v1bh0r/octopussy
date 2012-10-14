@@ -1,44 +1,72 @@
+<%= javascript_include_tag "jquery.js", "milestone.js" %>
+<%= stylesheet_link_tag "milestone.css" %>
 <% milestones = current_user.milestones 'ramankapur', 'foundation3' %>
 
 <div class="content_milestone">
-<div class="row center">
-	<ul class="thumbnails center">
-		<% milestones.each do |milestone| %>
-                       <%#= raise milestone.inspect %>
-		        <% issues = current_user.issues 'ramankapur','foundation3', milestone[:number] %>
-		        <li class="span4">
-				<div class="thumbnail" style='background-color: rosyBrown;'>
-					<div class='span2' style="width: 100px;"> <h6> Creator </h6>
-		                        	<%= image_tag(milestone[:creator][:avatar_url],:class => 'img-rounded') %>
-					</div>
-					<div class='span2' style='min-height:110px'>
-						<h4><%= milestone[:title] %></h4>
-		                                <% open_issues =  milestone[:open_issues] %>
-                                                <% due_on =  milestone[:due_on] %>
-		                                <% closed_issues = milestone[:closed_issues] %>
-						<p>Open Issues : <%= open_issues %><br>
-		                                   Closed Issues : <%= closed_issues %><br>
-                                                   Due On : <%= due_on[0,10] %></p>
-					</div>
-		                         <% progress = (open_issues*100)/(open_issues + closed_issues) %>
-		                        <div class='span4'>
-						<div class="progress" style=" width: 80%; background-color:#ffffff;">
-						   <div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
-						</div>
-					</div>
-					<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-				
-				</div>
-			</li>
-           <% end %>
-	</ul>
-</div>
-</div>
+  <div class="row center">
+    <ul class="thumbnails center">
+      <% milestones.each do |milestone| %>
+  <%#= raise milestone.inspect %>
+        <% issues = current_user.issues 'ramankapur','foundation3', milestone[:number] %>
+        <li class="span4">
+          <div class="thumbnail" style='background-color: rosyBrown;'>
+            <div class='span2' style="width: 100px;"> <h6> Creator </h6>
+              <%= image_tag(milestone[:creator][:avatar_url],:class => 'img-rounded') %>
+            </div>
+            <div class='span2' style='min-height:110px'>
+              <h4><%= milestone[:title] %></h4>
+              <% open_issues =  milestone[:open_issues] %>
+              <% @due_on =  milestone[:due_on] %>
+              <% closed_issues = milestone[:closed_issues] %>
+              <p>Open Issues : <%= open_issues %><br>
+                                                     Closed Issues : <%= closed_issues %><br>
+                Due On : <%= @due_on[0,10] %></p>
+            </div>
+            <% progress = (open_issues*100)/(open_issues + closed_issues) %>
+            <div class='span4'>
+              <div class="progress" style=" width: 80%; background-color:#ffffff;">
+                <div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
+                     </div>
+                     </div>
+                     <a href='#' id="myButton" class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 
-<style>
-.content_milestone
-{
-margin:20px;
-position:relative;
-}
-</style>
+
+                </div>
+                </li>
+                <div id="Popup">
+                  <a id="popupClose">x</a>
+
+                  <table style="width:1000px; border:2px solid #000;" id="table_issues">
+                    <tr>
+                      <th> Title of issue </th>
+                      <th> Created on </th>
+                      <th> Created on </th>
+                      <th> Assignee to </th>
+                      <th> Issue link </th>
+                      <th> Issue status </th>
+
+                    </tr>
+                    <% issues.each do |issue| %><%#=raise issue.inspect %>
+
+                      <tr>
+                        <td><%= issue[:title] %></td>
+                        <td><%= issue[:updated_at][0,10] %></td>
+                        <td><%= @due_on[0,10] %></td>
+                        <td><%= issue[:assignee][:login] %></td>
+                        <td><%= link_to("link", "#{issue[:html_url]}") %></td>
+                        <td><%= issue[:state] %></td>
+
+
+                      <tr>
+
+                      <% end %>
+                  </table>
+                </div>
+                <div id="bgPopup"></div>
+              <% end %>
+              </ul>
+            </div>
+          </div>
+
+
+

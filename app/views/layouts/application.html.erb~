@@ -12,7 +12,7 @@
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js" type="text/javascript"></script>
   <![endif]-->
 
-  <%= stylesheet_link_tag "application", "/libs/bootstrap/css/bootstrap.min.css", "/libs/bootstrap/css/bootstrap-responsive.min.css", 'jquery.bpopup.min.js', :media => "all" %>
+  <%= stylesheet_link_tag "application", "/libs/bootstrap/css/bootstrap.min.css", "/libs/bootstrap/css/bootstrap-responsive.min.css", :media => "all" %>
 
   <%= favicon_link_tag 'favicon_16.png', :rel => 'shortcut icon' %>
   <!-- For iPhone 4 Retina display: -->

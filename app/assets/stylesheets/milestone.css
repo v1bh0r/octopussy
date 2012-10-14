@@ -1,0 +1,62 @@
+#table_issues tr td
+{
+width:16%;
+border:1px solid #000;;
+
+}
+.content_milestone
+{
+margin:20px;
+position:relative;
+}
+
+/*
+#popupClose - this is referring to the anchor tag inside the popup conatainer.
+We'll absolute position and style it here
+*/
+#popupClose{  
+	font-size:20px;  
+	line-height:20px;  
+	position:absolute;
+	right:6px;  
+	top:4px;  
+	font-weight:700; 
+	display:block;  
+}
+
+/*
+#bgPopup - this is referring to the element that will cover the whole page 
+behind the popup and above the rest of the page.
+NOTE: if you are using z-index on the same level in the DOM - 
+	#bgPopup z-index needs to have the second highest value (behind #Popup)
+*/
+#bgPopup{
+	display:none; 
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6*/  
+	height:100%;  
+	width:100%;  
+	top:0;  
+	left:0;  
+	background:#000000;   
+	z-index:1;  
+}  
+
+/*
+#Popup - The popup container
+NOTE: if you are using z-index on the same level in the DOM - 
+	#Popup z-index needs to have the highest value.
+*/
+#Popup{  
+	display:none;  
+	position:fixed;  
+	_position:absolute; /* hack for internet explorer 6 */ 
+	background:#FFFFFF;  
+	border:2px solid #cecece;  
+	z-index:2;  
+	padding:12px;  
+	font-size:13px;  
+} 
+
+
+
