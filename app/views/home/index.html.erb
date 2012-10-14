@@ -1,9 +1,9 @@
 <%= stylesheet_link_tag 'parallax/styles' %>
 
-<div class="hero-unit pagination-centered">
+<div class="hero-unit pagination-centered" style="padding:45px">
   <h1>Octo meets Pussy</h1>
 
-  <h2>Octo and Pussy are soulmates. Together they can help you manage your projects using Github.</h2>
+  <h2>Octo and Pussy are soulmates.<br>Together they help you manage your projects using Github.</h2>
   <!-- REQUIRED FOR PARALLAX -->
   <div id="parallax" class="clear">
     <div class="parallax-layer" style="width:1200px; height:300px;">
@@ -21,20 +21,23 @@
   </div>
   <!-- /REQUIRED FOR PARALLAX -->
 </div>
-<div class="row">
+
+<div class="row pagination-centered">
+  <h1>Visualize in a glance</h1>
+
   <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details »</a></p>
+    <h2>Projects</h2>
+
+    <%= image_tag 'projects-preview.png' %>
   </div>
   <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-    <p><a class="btn" href="#">View details »</a></p>
+    <h2>Milestones</h2>
+
+    <%= image_tag 'milestones-preview.png' %>
   </div>
   <div class="span4">
-    <h2>Heading</h2>
-    <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-    <p><a class="btn" href="#">View details »</a></p>
+    <h2>Tasks</h2>
+
+    <%= image_tag 'tasks-preview.png' %>
   </div>
 </div>
