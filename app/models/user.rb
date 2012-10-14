@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   attr_accessor :encrypted_password
-  has_many :favourites
+  has_many :favourites, :dependent => :destroy
 
   def self.find_for_github(access_token)
     if user = User.where(:uid => access_token.uid).first
@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
   end
 
   def projects
-    github_client.repos :params => {:sort => 'updated'}
+    projects = github_client.repos :params => {:sort => 'updated'}
+    favorites = self.favourites.all(:select => 'project_id').collect { |fav| fav.project_id }
+    projects.map! { |project| favorites.include?(project[:id]) ? project.merge(:favorite=>true) : project  }
   end
 
   def milestones(project_owner, project_name, state = 'open')
