@@ -1,3 +1,5 @@
+require 'github'
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,7 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   attr_accessor :encrypted_password
-  has_many :favourites
+  has_many :favourites, :dependent => :destroy
 
   def self.find_for_github(access_token)
     if user = User.where(:uid => access_token.uid).first
@@ -22,25 +24,28 @@ class User < ActiveRecord::Base
   end
 
   def github_client
-    Github.new :oauth_token => oauth_token
+    Github.new oauth_token
   end
 
   def projects
-    github_client.repos.all
-  end
-  def issues project_owner, project_name, milestone_id
-  github_client.issues.list_repo project_owner, project_name , :milestone => milestone_id
-
-  end
-  def milestones project_owner, project_name
-    github_client.issues.milestones.list project_owner, project_name, :state => 'open'
+    projects = github_client.repos :params => {:sort => 'updated'}
+    favorites = self.favourites.all(:select => 'project_id').collect { |fav| fav.project_id }
+    projects.map! { |project| favorites.include?(project[:id]) ? project.merge(:favorite => true) : project }
   end
 
-  def all_milestones(owner, project_name)
-    github_client.issues.milestones.list(owner, project_name) rescue []
+  def issues(project_owner, project_name, milestone_id)
+    github_client.issues project_owner, project_name, :params => {:milestone => milestone_id}
   end
 
-  def collaborators(owner, project_name)
-    github_client.repos.collaborators.list(owner, project_name)
+  def milestones(project_owner, project_name, state = 'open')
+    github_client.milestones project_owner, project_name, :params => {:state => state}
+  end
+
+  def all_milestones(project_owner, project_name)
+    milestones(project_owner, project_name, 'open') + milestones(project_owner, project_name, 'closed')
+  end
+
+  def collaborators(project_owner, project_name)
+    github_client.collaborators(project_owner, project_name)
   end
 end
