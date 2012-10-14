@@ -21,8 +21,6 @@ class Github
     cache_key = Digest::SHA1.hexdigest("#{@oauth_token}:#{url}:#{options[:params]}:#{options[:headers]}")
     cached_value = find_in_cache cache_key unless options[:skip_cache]
 
-    puts cached_value[:set_at] if cached_value
-    puts 10.seconds.ago
     if cached_value and (cached_value[:set_at] > 2.minutes.ago)
       puts 'Called recently'
       return cached_value[:response]
@@ -30,7 +28,7 @@ class Github
       res = @conn.get do |req|
         req.url url
         if cached_value
-          req.headers['If-Modified-Since'] = cached_value[:updated_at]
+          req.headers['If-Modified-Since'] = cached_value[:updated_at] if cached_value[:updated_at]
         end
         req.headers['Authorization'] = "token #{@oauth_token}"
 
