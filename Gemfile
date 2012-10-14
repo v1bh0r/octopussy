@@ -10,6 +10,7 @@ gem 'devise', '~> 2.1.2'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 gem 'faraday'
 gem 'memcache-client'
+gem 'RubyInline', '~> 3.11.3'
 
 # Gems used only for assets and not required
 # in production environments by default.

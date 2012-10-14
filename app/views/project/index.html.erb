@@ -20,3 +20,4 @@
 <%#= "<h4 style='text-align:center'>Wallah! All projects are your favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
     </ul>
   </div>
+</div>
