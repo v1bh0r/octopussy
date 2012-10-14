@@ -41,3 +41,15 @@
     <%= image_tag 'tasks-preview.png' %>
   </div>
 </div>
+
+<script type="text/javascript" language="JavaScript" src="/libs/jquery.event.frame.js"></script>
+<script type="text/javascript" language="JavaScript" src="/libs/jquery.jparallax.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#parallax .parallax-layer')
+                .parallax({
+                    mouseport:$('#parallax'),
+                    xparallax:0.1
+                });
+    });
+</script>
