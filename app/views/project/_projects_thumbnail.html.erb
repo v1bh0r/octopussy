@@ -1,7 +1,7 @@
 <ul class="thumbnails project-thumbnails" id='fav'>
   <h1>Favorite Projects</h1>
   <hr/>
- <div class='pagination-center'>
+
   <% @projects[:favorites].each do |project| %>
       <% project_name = project[:name] %>
       <% owner_login = project[:owner][:login] %>
@@ -9,12 +9,12 @@
         <div class="thumbnail project-thumbnail">
           <div class='span2 owner-pic'><%= image_tag project[:owner][:avatar_url], :title => owner_login, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
           <div class='span2 collaborator-pics'>
-            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), '#' %></h3></a>
+            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), project[:html_url], :title => project_name, :target => '_blank' %></h3></a>
             <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
                 <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
             <% end %>
           </div>
-          <div class='span3 progress-bar pagination-centered'>
+          <div class='span3 pagination-centered'>
             <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :title => 'Project Health based on Milestones' do %>
                 <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
                   <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"><p></p></div>
@@ -32,7 +32,6 @@
         </div>
       </li>
   <% end %>
-   </div>
   <%#= "<h4 style='text-align:center'>Oops! You have not marked any project as favorite.</h4>".html_safe if Favourite.find.all(:conditions => ['project_id NOT IN ?', @projects.collect { |p| p.id }]) %>
 </ul>
 
@@ -46,12 +45,12 @@
         <div class="thumbnail project-thumbnail">
           <div class='span2 owner-pic'><%= image_tag project[:owner][:avatar_url], :title => owner_login, :class => 'img-rounded', :style => 'width:100px', :alt => 'Owner' %></div>
           <div class='span2 collaborator-pics'>
-            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), '#' %></h3></a>
+            <h3 class='project-title'><%= link_to truncate(project_name, :length => 15), project[:html_url], :title => project_name, :target => '_blank' %></h3></a>
             <% current_user.collaborators(owner_login, project_name).each_with_index do |collaborator, index| %>
                 <%= image_tag collaborator[:avatar_url], :class => 'collaborators-small img-rounded', :title => collaborator[:name], :alt => 'Collaborator' %>
             <% end %>
           </div>
-          <div class='span3 progress-bar pagination-centered'>
+          <div class='span3 pagination-centered'>
             <%= link_to "/projects/#{owner_login}/#{project_name}/milestones", :title => 'Project Health based on Milestones' do %>
                 <div class="progress progress-danger progress-striped active" id='project-data' data-project='<%=project_name%>' data-id='<%=project[:id]%>' data-owner='<%=owner_login%>'>
                   <div class="bar" id='bar-<%= project[:id] %>' style="width: 100%"><p></p></div>

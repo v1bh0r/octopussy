@@ -61,10 +61,6 @@ div.span3 a {
     text-decoration: none;
 }
 
-div.progress-bar {
-    width: 300px;
-}
-
 /* Bootstrap style override */
 a.btn {
     padding: 12px 10px;
