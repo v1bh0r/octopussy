@@ -4,9 +4,19 @@
     <h3>Rumble Rumble!</h3>
     <%= link_to image_tag('rr-logo-small.png'), 'http://railsrumble.com/entries/212-red-indians', :target => '_blank' %>
   </div>
-  <div class="pull-right" style="padding-right: 10px;">
-    <%= link_to '/home/credits' do %>
-        <h3>Meet the team</h3>
-    <% end %>
+  <div>
+    <ul class="breadcrumb pagination-centered">
+      <li>
+        <%= link_to '/home/credits', :target => '_blank' do %>
+            Meet the team
+        <% end %>
+        <span class="divider">|</span>
+      </li>
+      <li>
+        <%= link_to 'http://www.smashingboxes.com/using-github-issues-to-manage-projects/', :target => '_blank' do %>
+            Github for Project Management
+        <% end %>
+      </li>
+    </ul>
   </div>
 </footer>

@@ -17,10 +17,18 @@
             <% end %>
           </li>
       <% else %>
-          <li>
+          <li id="login">
             <%= link_to('Login with Github', user_omniauth_authorize_path(:github)) %>
           </li>
       <% end %>
     </ul>
   </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#login').tooltip({
+            animation:true,
+            placement:'bottom',
+            title:'We request permissions only to read the stats on your private repositories. You have the power to kick us out anytime from your Github settings.'});
+    })
+</script>
