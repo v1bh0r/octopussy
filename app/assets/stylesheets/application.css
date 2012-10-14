@@ -34,6 +34,7 @@ ul.project-thumbnails {
 
 div.project-thumbnail {
     background-color: rosyBrown;
+    border-radius: 5px;
 }
 
 div.project-thumbnail .span2 a {
@@ -46,14 +47,17 @@ a.fav-unfav-btn {
 
 div.owner-pic {
     width: 107px;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 div.collaborator-pics {
-    min-height: 110px;
+    min-height: 134px;
+    margin-top: -4px;
 }
 
-hr.unfav {
-    margin-top: -7px;
+h3.project-title {
+    margin-top: 1px;
 }
 
 /* Bootstrap classes override */

@@ -1,6 +1,5 @@
 <% milestones = current_user.milestones 'ramankapur', 'foundation3' %>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
-<script src="http://dinbror.dk/downloads/jquery.bpopup-0.7.0.min.js"></script>
+
 <div class="content_milestone">
 <div class="row center">
 	<ul class="thumbnails center">
@@ -24,36 +23,7 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' id="check" class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
-
-<style type="text/css">
-			body { font-family: "HelveticaNeue","Helvetica-Neue", "Helvetica", "Arial", sans-serif; }
-			.big-link { display:block; margin-top: 100px; text-align: center; font-size: 70px; color: #06f; }
-		</style>
-		
-	
-	<body>
-
-		<a href="#" class="big-link" data-reveal-id="myModal">
-			Fade and Pop
-		</a>	
-		
-		<a href="#" class="big-link" data-reveal-id="myModal" data-animation="fade">
-			Fade
-		</a>
-		
-		<a href="#" class="big-link" data-reveal-id="myModal" data-animation="none">
-			None
-		</a>
-
-		<div id="myModal" class="reveal-modal">
-			<h1>Reveal Modal Goodness</h1>
-			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
-			<a class="close-reveal-modal">&#215;</a>
-		</div>
-			
-	</body>
-
+				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
 				
 			</div>
 		</li>
@@ -61,9 +31,8 @@
 	</ul>
 </div>
 </div>
-
+<script>
 <style>
-
 .content_milestone
 {
 margin:20px;
