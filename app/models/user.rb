@@ -31,15 +31,15 @@ class User < ActiveRecord::Base
     github_client.repos :params => {:sort => 'updated'}
   end
 
-  def milestones project_owner, project_name
-    #github_client.issues.milestones.list project_owner, project_name, :state => 'open'
+  def milestones(project_owner, project_name, state = 'open')
+    github_client.milestones project_owner, project_name, :params => {:state => state}
   end
 
-  def all_milestones(owner, project_name)
-    #github_client.issues.milestones.list(owner, project_name) rescue []
+  def all_milestones(project_owner, project_name)
+    milestones(project_owner, project_name, 'open') + milestones(project_owner, project_name, 'closed')
   end
 
-  def collaborators(owner, project_name)
-    #github_client.repos.collaborators.list(owner, project_name)
+  def collaborators(project_owner, project_name)
+    github_client.collaborators(project_owner, project_name)
   end
 end

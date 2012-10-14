@@ -17,8 +17,8 @@ class Github
   end
 
   def request(url, options={})
-    cache_key = "#{@oauth_token}:#{Digest::MD5.hexdigest(url)}:#{Digest::MD5.hexdigest(options[:params].to_json)}:#{Digest::MD5.hexdigest(options[:headers].to_json)}"
-    cached_value = find_in_cache cache_key
+    cache_key = Digest::SHA1.hexdigest("#{@oauth_token}:#{url}:#{options[:params]}:#{options[:headers]}")
+    cached_value = find_in_cache cache_key unless options[:skip_cache]
 
     res = @conn.get do |req|
       req.url url
@@ -53,5 +53,13 @@ class Github
 
   def repos(options = {})
     request '/user/repos', options
+  end
+
+  def milestones(project_owner, project_name, options = {})
+    request "/repos/#{project_owner}/#{project_name}/milestones", options
+  end
+
+  def collaborators(project_owner, project_name, options={})
+    request "/repos/#{project_owner}/#{project_name}/collaborators", options
   end
 end
