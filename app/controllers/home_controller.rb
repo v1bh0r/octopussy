@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :when_logged_in
+  before_filter :when_logged_in, :except => :credits
 
   def index
   end

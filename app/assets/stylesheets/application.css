@@ -60,6 +60,24 @@ div.span3 a {
     text-decoration: none;
 }
 
+.credit-col {
+    width: 50%;
+}
+
+.credit-pic {
+    float: left;
+    width: 20%;
+    list-style: none;
+}
+
+.credit-desc {
+    float: left;
+    width: 70%;
+    list-style: none;
+    margin-left: 1em;
+    text-align: justify;
+}
+
 /* Bootstrap style override */
 a.btn {
     padding: 12px 10px;
