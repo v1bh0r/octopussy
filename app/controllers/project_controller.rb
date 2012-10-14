@@ -1,6 +1,5 @@
 class ProjectController < ApplicationController
-  def index
-  end
+  before_filter :authenticate
 
   def show
   end
@@ -42,5 +41,4 @@ class ProjectController < ApplicationController
     total = milestones.count
     render :json => { :total => total, :completeness => (milestones.present? ? completed_percentage/total : 0) }
   end
-
 end

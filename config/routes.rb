@@ -19,6 +19,8 @@ Octopussy::Application.routes.draw do
 
   get "home/contact"
 
+  get "home/credits"
+
   match "projects/:owner/:name/milestones" => 'project#milestones'
   match "projects/:owner/:name/:milestone/tasks" => 'project#tasks'
 
