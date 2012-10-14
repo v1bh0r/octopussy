@@ -5,6 +5,9 @@
     <% end %>
 
     <ul class="nav pull-right">
+      <li>
+        <%= link_to 'Home', '/' %>
+      </li>
       <% if user_signed_in? %>
           <li>
             <%= link_to current_user.info['urls']['GitHub'], :target => '_blank' do %>
