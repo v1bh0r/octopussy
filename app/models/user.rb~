@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
     github_client.repos.all
   end
   def issues project_owner, project_name, milestone_id
+  raise milestone_id.inspect
   github_client.issues.list_repo project_owner, project_name , :milestone => milestone_id
 
   end

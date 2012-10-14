@@ -1,14 +1,17 @@
 <% milestones = current_user.milestones 'ramankapur', 'foundation3' %>
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script src="http://dinbror.dk/downloads/jquery.bpopup-0.7.0.min.js"></script>
 <div class="content_milestone">
 <div class="row center">
 	<ul class="thumbnails center">
 		<% milestones.each do |milestone| %>
+                <% issues = current_user.issues 'ramankapur','foundation3', milestone.number %>
+                <%#= raise issues.inspect %>
                 <li class="span4">
 			<div class="thumbnail" style='background-color: rosyBrown;'>
 				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
 				<div class='span2' style='min-height:110px'>
-					<h2><%= milestone.title %></h2>
+					<h4><%= milestone.title %></h4>
                                         <% open_issues =  milestone.open_issues %>
                                         <% closed_issues = milestone.closed_issues %>
 					<p>Open Issues : <%= open_issues %><br>
@@ -21,7 +24,36 @@
 						<div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
 					</div>
 				</div>
-				<a href='#' class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
+				<a href='#' id="check" class='btn btn-primary' style="margin-left:40%; position:relative;">Issue List</a>
+
+<style type="text/css">
+			body { font-family: "HelveticaNeue","Helvetica-Neue", "Helvetica", "Arial", sans-serif; }
+			.big-link { display:block; margin-top: 100px; text-align: center; font-size: 70px; color: #06f; }
+		</style>
+		
+	
+	<body>
+
+		<a href="#" class="big-link" data-reveal-id="myModal">
+			Fade and Pop
+		</a>	
+		
+		<a href="#" class="big-link" data-reveal-id="myModal" data-animation="fade">
+			Fade
+		</a>
+		
+		<a href="#" class="big-link" data-reveal-id="myModal" data-animation="none">
+			None
+		</a>
+
+		<div id="myModal" class="reveal-modal">
+			<h1>Reveal Modal Goodness</h1>
+			<p>This is a default modal in all its glory, but any of the styles here can easily be changed in the CSS.</p>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+			
+	</body>
+
 				
 			</div>
 		</li>
@@ -31,6 +63,7 @@
 </div>
 
 <style>
+
 .content_milestone
 {
 margin:20px;

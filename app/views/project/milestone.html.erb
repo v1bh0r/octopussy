@@ -4,6 +4,8 @@
 <div class="row center">
 	<ul class="thumbnails center">
 		<% milestones.each do |milestone| %>
+                <% issues = current_user.issues 'ramankapur','foundation3', milestone.number %>
+                <%#= raise issues.inspect %>
                 <li class="span4">
 			<div class="thumbnail" style='background-color: rosyBrown;'>
 				<div class='span2' style="width: 100px;"><img src="http://www.hreat.org/profilepics/nopic.jpg" size='200x200' class="img-rounded"></div>
@@ -29,7 +31,7 @@
 	</ul>
 </div>
 </div>
-
+<script>
 <style>
 .content_milestone
 {
