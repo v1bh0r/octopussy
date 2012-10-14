@@ -9,7 +9,7 @@
     <%= image_tag(milestone[:creator][:avatar_url], :title => milestone[:creator][:login], :size => '50x50') %>
   </td>
   <td style="vertical-align: middle;">
-    <% progress = (milestone[:open_issues]*100)/(milestone[:open_issues] + milestone[:closed_issues]) rescue 0 %>
+    <% progress = (milestone[:closed_issues]*100)/(milestone[:open_issues] + milestone[:closed_issues]) rescue 0 %>
     <div class="progress pull-down" title="<%= milestone[:open_issues] %> out of <%= milestone[:open_issues] + milestone[:closed_issues] %> issues are open">
       <div class="bar" style="width: <%= progress %>%; background-color:#2a6023;"></div>
     </div>
