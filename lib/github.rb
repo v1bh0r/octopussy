@@ -22,7 +22,6 @@ class Github
     cached_value = find_in_cache cache_key unless options[:skip_cache]
 
     if cached_value and (cached_value[:set_at] > 2.minutes.ago)
-      puts 'Called recently'
       return cached_value[:response]
     else
       res = @conn.get do |req|
@@ -43,11 +42,9 @@ class Github
 
       case res.status
         when 304
-          puts 'Sending from cache'
           save_in_cache cache_key, updated_at: cached_value[:updated_at], response: cached_value[:response]
           return cached_value[:response]
         when 200
-          puts 'made a hit on github'
           response = JSON.parse res.body, :symbolize_names => true
           updated_at = res.headers['last-modified']
           save_in_cache cache_key, updated_at: updated_at, response: response
